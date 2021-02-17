@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_google_maps/flutter_google_maps.dart';
+import 'package:flutter/foundation.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MainScreen extends StatefulWidget {
 
   static const String idScreen = "main";
+
 
 
   @override
@@ -22,6 +25,20 @@ class _MainScreenState extends State<MainScreen> {
     zoom: 14.4746,
   );
 
+ GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+ Position currentPosition;
+ var geoLocator = Geolocator();
+
+ void locatePosition() async {
+
+   Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+   currentPosition = position;
+   LatLng latLatPosition = LatLng(position.latitude,position.longitude);
+
+
+ }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,13 +48,17 @@ class _MainScreenState extends State<MainScreen> {
       body: Stack(
         children: [
           GoogleMap(
-            mapType: MapType.none,
+            mapType: MapType.normal,
             myLocationButtonEnabled: true,
-            initialPosition: _kGooglePlex;
+            initialCameraPosition: _kGooglePlex,
             onMapCreated: (GoogleMapController controller){
+
               _controllerGoogleMap.complete(controller);
               newGoogleMapController = controller;
-    }
+
+            },
+
+
           ),
         ],
       ),
