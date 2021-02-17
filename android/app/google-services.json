@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "832711579792",
+    "project_id": "flutter-cet-301",
+    "storage_bucket": "flutter-cet-301.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832711579792:android:354f9780b81f209210a015",
+        "android_client_info": {
+          "package_name": "com.yusufpolat.fluttercet301drive_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832711579792-tehcs0q51tie748lbgpssf68ph7u7hmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBR0JcGLDCqUd2yyS-QruQSczpDPh4YHXo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "832711579792-tehcs0q51tie748lbgpssf68ph7u7hmo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
