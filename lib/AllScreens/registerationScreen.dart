@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttercet301drive_app/AllScreens/loginScreen.dart';
 import 'package:fluttercet301drive_app/AllScreens/mainscreen.dart';
+import 'package:fluttercet301drive_app/AllWidgets/progressDialog.dart';
 import 'package:fluttercet301drive_app/main.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 class RegisterationScreen extends StatelessWidget {
@@ -169,9 +170,18 @@ class RegisterationScreen extends StatelessWidget {
   void registerNewUser(BuildContext context) async
   {
 
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context){
+          return  ProgressDialog(message: "Registering, Please wait....",);
+        }
+    );
+
     final User firebaseUser = (await _firebaseAuth
         .createUserWithEmailAndPassword(
         email: emailTextEditingController.text, password: passwordTextEditingController.text).catchError((errMsg){
+      Navigator.pop(context);
           displayToastMessage("Error: " + errMsg.toString(), context);
     })).user;
 
@@ -190,7 +200,8 @@ class RegisterationScreen extends StatelessWidget {
     Navigator.pushNamedAndRemoveUntil(context, MainScreen.idScreen, (route) => false);
     }
   else{
-    //error display
+    Navigator.pop(context);
+
     displayToastMessage("New ser has not been created", context);
   }
   }
