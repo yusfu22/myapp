@@ -13,7 +13,7 @@ void main() async {
 DatabaseReference userRef = FirebaseDatabase.instance.reference().child("users");
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainScreen(),
+      home: RegisterationScreen(),
       routes: {
         RegisterationScreen.idScreen: (context) => RegisterationScreen(),
         LoginScreen.idScreen: (context) => LoginScreen(),

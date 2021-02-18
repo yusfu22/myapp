@@ -180,7 +180,8 @@ class RegisterationScreen extends StatelessWidget {
 
     final User firebaseUser = (await _firebaseAuth
         .createUserWithEmailAndPassword(
-        email: emailTextEditingController.text, password: passwordTextEditingController.text).catchError((errMsg){
+        email: emailTextEditingController.text, password: passwordTextEditingController.text)
+        .catchError((errMsg){
       Navigator.pop(context);
           displayToastMessage("Error: " + errMsg.toString(), context);
     })).user;
